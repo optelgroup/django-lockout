@@ -11,7 +11,7 @@ version = '0.1.0'
 
 setup(name='django-lockout',
       version=version,
-      description="cached-based Django app that locks out users after too "
+      description="cache-based Django app that locks out users after too "
       "many failed login attempts.",
       long_description=open('README.txt').read(),
       classifiers=[
