@@ -13,7 +13,7 @@ setup(name='django-lockout',
       version=version,
       description="cache-based Django app that locks out users after too "
       "many failed login attempts.",
-      long_description=open('README.txt').read(),
+      long_description=open('README.rst').read(),
       classifiers=[
           'Development Status :: 4 - Beta',
           'Framework :: Django',
