@@ -31,7 +31,8 @@ class LockoutMiddleware(object):
         thread_namespace.lockoutrequest = request
         
     def process_response(self, request, response):
-        delattr(thread_namespace, 'lockoutrequest')
+        if hasattr(thread_namespace, 'lockoutrequest'):
+            delattr(thread_namespace, 'lockoutrequest')
         return response
         
 ########################################################################
