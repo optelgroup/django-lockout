@@ -15,11 +15,12 @@ Login attempts can be tracked by IP only or by IP plus user-agent.
 
 Requirements 
 ============ 
-``django-lockout`` is designed for Django 1.3. It also works with Django 1.0,
-1.1, and 1.2, with the exception of the test suite (which relies on
-``django.test.client.RequestFactory``). If you use ``django-lockout`` with an
+``django-lockout`` requires and has been tested with Django 1.3 and Python
+versions 2.4 through 2.7. It should work with earlier versions of Django but
+this is untested, as the test suite relies on
+``django.test.client.RequestFactory``. If you use ``django-lockout`` with an
 earlier version of Django than 1.3, you should not add ``'lockout'`` to your
-``INSTALLED_APPS``.
+``INSTALLED_APPS`` to prevent running the test suite.
 
 ``django-lockout`` requires that you have enabled a cache for your site.
 

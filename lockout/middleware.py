@@ -31,6 +31,9 @@ class LockoutMiddleware(object):
         thread_namespace.lockoutrequest = request
         
     def process_response(self, request, response):
+        # If a previous middleware returned a response or raised an exception,
+        # our process_request won't have gotten called, so check before
+        # deleting.
         if hasattr(thread_namespace, 'lockoutrequest'):
             delattr(thread_namespace, 'lockoutrequest')
         return response

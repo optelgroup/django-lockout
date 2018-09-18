@@ -37,7 +37,12 @@ def reset_attempts(request):
     """Clears the cache key for the specified ``request``.
     """
     params = []
-    ip = request.META.get('REMOTE_ADDR', '')
+    ip = request.META.get('HTTP_X_FORWARDED_FOR', None)
+    if ip:
+        # X_FORWARDED_FOR returns client1, proxy1, proxy2,...
+        ip = ip.split(', ')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR', '')
     params.append(ip)
     if settings.USE_USER_AGENT:
         useragent = request.META.get('HTTP_USER_AGENT', '')
