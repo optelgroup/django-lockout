@@ -9,7 +9,7 @@ from django.core.cache import cache
 from lockout.middleware import thread_namespace
 from lockout.exceptions import LockedOut
 from lockout.utils import generate_base_key
-import lockout.settings as settings
+from lockout import settings
 
 ########################################################################
 

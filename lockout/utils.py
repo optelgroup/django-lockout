@@ -9,7 +9,7 @@ try:
 except ImportError:
     from md5 import md5
 from django.core.cache import cache
-import lockout.settings as settings
+from lockout import settings
 import re
 
 ########################################################################
