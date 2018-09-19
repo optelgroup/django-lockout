@@ -14,7 +14,7 @@ import re
 
 ########################################################################
 
-WHITESPACE = re.compile('\s')
+WHITESPACE = re.compile(b('\s'))
 
 def generate_base_key(*params):
     """Generates a base key to be used for caching, containing the
