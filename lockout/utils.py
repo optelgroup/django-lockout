@@ -2,13 +2,14 @@
 Lockout Utils
 """
 ########################################################################
+from six import b
 
 try:
     from hashlib import md5
 except ImportError:
     from md5 import md5
 from django.core.cache import cache
-import settings
+import lockout.settings as settings
 import re
 
 ########################################################################
@@ -20,13 +21,13 @@ def generate_base_key(*params):
     CACHE_PREFIX and the request ``params``, plus a hexdigest. The base key
     will later be combined with any required version or prefix.
     """    
-    raw_key = ";".join(params)
+    raw_key = b(";".join(params))
     digest = md5(raw_key).hexdigest()
     
     # Whitespace is stripped but the hexdigest ensures uniqueness
     key = '%(prefix)s_%(raw_key)s_%(digest)s' % dict(
         prefix=settings.CACHE_PREFIX,
-        raw_key=WHITESPACE.sub('', raw_key)[:125], 
+        raw_key=WHITESPACE.sub(b(''), raw_key)[:125],
         digest=digest)
     
     return key

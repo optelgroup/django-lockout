@@ -1,2 +1,2 @@
-from exceptions import LockedOut
-from utils import reset_attempts
+from lockout.exceptions import LockedOut
+from lockout.utils import reset_attempts
