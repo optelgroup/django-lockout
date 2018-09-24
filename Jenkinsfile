@@ -20,10 +20,18 @@ pipeline {
         SERVER_ADDRESS = 'http://10.101.211.54:3141'
     }
     stages {
+        stage('Install Python requirements') {
+            steps {
+                bat 'where python'
+                bat 'python --version'
+                bat 'pip install --upgrade setuptools'
+                bat 'pip install tox'
+            }
+        }
         stage('Run tests') {
             steps {
                 script {
-                    echo "N/A"
+                    bat 'tox'
                 }
             }
         }
